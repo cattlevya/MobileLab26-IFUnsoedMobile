@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.pemmob.cattlevya"
+    namespace = "com.pemob.cattlevya"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.pemmob.cattlevya"
-        minSdk = 24
+        applicationId = "com.pemob.cattlevya"
+        minSdk = 29
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
@@ -51,4 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
 }
