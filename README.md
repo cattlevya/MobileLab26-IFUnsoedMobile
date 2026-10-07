@@ -7,6 +7,12 @@ Getar adalah aplikasi Android berbasis Jetpack Compose untuk menampilkan daftar 
 Dokumentasi dan rekaman penjelasan source code dapat diakses pada link Google Drive berikut:
 - [Link Penjelasan Source Code (Google Drive)](https://drive.google.com/drive/folders/1XEmsxAgl8cvoBuaXqut8PYavD-enZzZf?usp=sharing)
 
+## Download APK
+
+File instalasi APK siap pakai dapat diunduh langsung melalui tautan berikut:
+- 📱 [Download GetarBMKG.apk (v1.0.0)](https://github.com/cattlevya/Responsi-PemrogramanMobile-H1D024102/releases/download/v1.0.0/GetarBMKG.apk)
+- 📦 [Halaman GitHub Releases](https://github.com/cattlevya/Responsi-PemrogramanMobile-H1D024102/releases/tag/v1.0.0)
+
 ## Screenshot
 
 | Home | Detail |
