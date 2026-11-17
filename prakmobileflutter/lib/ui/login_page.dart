@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prakmobileflutter/bloc/login_bloc.dart';
+import 'package:prakmobileflutter/helpers/user_info.dart';
+import 'package:prakmobileflutter/ui/produk_page.dart';
 import 'package:prakmobileflutter/ui/registrasi_page.dart';
+import 'package:prakmobileflutter/widget/warning_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -77,8 +81,38 @@ class _LoginPageState extends State<LoginPage> {
       child: const Text("Login"),
       onPressed: () {
         var validate = _formKey.currentState!.validate();
+        if (validate) {
+          if (!_isLoading) _submit();
+        }
       },
     );
+  }
+
+  void _submit() {
+    _formKey.currentState!.save();
+    setState(() {
+      _isLoading = true;
+    });
+    LoginBloc.login(
+            email: _emailTextboxController.text,
+            password: _passwordTextboxController.text)
+        .then((value) async {
+      await UserInfo().setToken(value.token.toString());
+      await UserInfo().setUserID(int.parse(value.userID.toString()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const ProdukPage()));
+    }, onError: (error) {
+      print(error);
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => const WarningDialog(
+                description: "Login gagal, silahkan coba lagi",
+              ));
+    });
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   Widget _menuRegistrasi() {
@@ -89,12 +123,8 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(color: Colors.blue),
         ),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const RegistrasiPage(),
-            ),
-          );
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const RegistrasiPage()));
         },
       ),
     );
